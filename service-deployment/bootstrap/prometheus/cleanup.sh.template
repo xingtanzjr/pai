@@ -21,7 +21,8 @@
 
 INSTANCES="daemonset/node-exporter
 deployment/prometheus-deployment
-configmap/prometheus-configmap"
+configmap/prometheus-configmap
+configmap/prometheus-alert"
 
 for instance in ${INSTANCES}; do
   kubectl delete --ignore-not-found --now ${instance}
