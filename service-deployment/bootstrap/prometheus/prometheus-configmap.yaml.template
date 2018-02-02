@@ -23,7 +23,7 @@ data:
   prometheus.yml: |-
     # Scrape config for cluster components.
     rule_files:
-      - "/etc/prometheus-rules/*.rules"
+      - "/etc/prometheus-alert/*.rules"
     scrape_configs: 
     - job_name: "node_exporter"
       scrape_interval: "15s"
