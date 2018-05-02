@@ -242,3 +242,13 @@ servicelist:
       - cleanup.sh
     startscript: start.sh
     stopscript: cleanup.sh
+
+  spark:
+    prerequisite:
+      - hadoop-service
+    templatelist:
+      - node-label.sh
+      - spark-base.yaml
+      - cleanup.sh
+    startscript: start.sh
+    stopscript: cleanup.sh
