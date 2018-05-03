@@ -15,6 +15,21 @@
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+apiVersion: v1
+kind: Service
+metadata:
+  name: pylon-svc
+  labels:
+    app: pylon-svc
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    nodePort: {{ clusterinfo['pyloninfo']['port'] }}
+    name: webui
+  selector:
+    app: pylon
+---
 apiVersion: extensions/v1beta1
 kind: DaemonSet
 metadata:
@@ -54,6 +69,5 @@ spec:
           ports:
             - name: pylon
               containerPort: 80
-              hostPort: {{ clusterinfo['pyloninfo']['port'] }}
       imagePullSecrets:
         - name: {{ clusterinfo['dockerregistryinfo']['secretname'] }}

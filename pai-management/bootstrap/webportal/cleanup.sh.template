@@ -21,6 +21,8 @@ pushd $(dirname "$0") > /dev/null
 
 kubectl delete ds webportal-ds
 
+kubectl delete svc web-portal-svc
+
 {% for host in machinelist %}
     {% if 'webportal' in machinelist[ host ] and machinelist[ host ][ 'webportal' ] == 'true' %}
 kubectl label nodes {{ machinelist[ host ][ 'nodenamelb' ] }} webportal-

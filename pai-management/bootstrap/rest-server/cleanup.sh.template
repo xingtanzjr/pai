@@ -21,6 +21,8 @@ pushd $(dirname "$0") > /dev/null
 
 kubectl delete ds rest-server-ds
 
+kubectl delete svc rest-server-svc
+
 {% for host in machinelist %}
     {% if 'restserver' in machinelist[ host ] and machinelist[ host ][ 'restserver' ] == 'true' %}
 kubectl label nodes {{ machinelist[ host ][ 'nodenamelb' ] }} restserver-
