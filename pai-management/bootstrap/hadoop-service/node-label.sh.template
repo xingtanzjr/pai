@@ -19,21 +19,21 @@
 
 {% for host in machinelist %}
     {% if 'hdfsrole' in machinelist[ host ] and machinelist[ host ][ 'hdfsrole' ] == 'master' -%}
-kubectl label nodes {{ machinelist[ host ][ 'nodename' ] }} hdfsrole=master
+kubectl label nodes {{ machinelist[ host ][ 'nodenamelb' ] }} hdfsrole=master
     {% endif %}
     {% if 'yarnrole' in machinelist[ host ] and machinelist[ host ][ 'yarnrole' ] == 'master' -%}
-kubectl label nodes {{ machinelist[ host ][ 'nodename' ] }} yarnrole=master
+kubectl label nodes {{ machinelist[ host ][ 'nodenamelb' ] }} yarnrole=master
     {% endif %}
     {% if 'hdfsrole' in machinelist[ host ] and machinelist[ host ][ 'hdfsrole' ] == 'worker' -%}
-kubectl label nodes {{ machinelist[ host ][ 'nodename' ] }} hdfsrole=worker
+kubectl label nodes {{ machinelist[ host ][ 'nodenamelb' ] }} hdfsrole=worker
     {% endif %}
     {% if 'yarnrole' in machinelist[ host ] and machinelist[ host ][ 'yarnrole' ] == 'worker' -%}
-kubectl label nodes {{ machinelist[ host ][ 'nodename' ] }} yarnrole=worker
+kubectl label nodes {{ machinelist[ host ][ 'nodenamelb' ] }} yarnrole=worker
     {% endif %}
     {% if 'jobhistory' in machinelist[ host ] and machinelist[ host ][ 'jobhistory' ] == 'true' -%}
-kubectl label nodes {{ machinelist[ host ][ 'nodename' ] }} jobhistory=true
+kubectl label nodes {{ machinelist[ host ][ 'nodenamelb' ] }} jobhistory=true
     {% endif %}
     {% if 'zookeeper' in machinelist[ host ] and machinelist[ host ][ 'zookeeper' ] == 'true' -%}
-kubectl label nodes {{ machinelist[ host ][ 'nodename' ] }} zookeeper=true
+kubectl label nodes {{ machinelist[ host ][ 'nodenamelb' ] }} zookeeper=true
     {% endif %}
 {% endfor %}

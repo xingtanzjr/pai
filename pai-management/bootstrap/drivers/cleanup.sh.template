@@ -23,7 +23,7 @@ kubectl delete ds drivers-one-shot
 
 {% for host in machinelist %}
     {% if 'gpu' in machineinfo[ machinelist[ host ][ 'machinetype' ] ] %}
-kubectl label nodes {{ machinelist[ host ][ 'nodename' ] }} machinetype-
+kubectl label nodes {{ machinelist[ host ][ 'nodenamelb' ] }} machinetype-
     {% endif %}
 {% endfor %}
 

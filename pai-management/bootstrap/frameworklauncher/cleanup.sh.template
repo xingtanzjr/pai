@@ -26,7 +26,7 @@ kubectl delete configmap frameworklauncher-configmap
 
 {% for host in machinelist %}
     {% if 'launcher' in machinelist[ host ] and machinelist[ host ][ 'launcher' ] == 'true' %}
-kubectl label nodes {{ machinelist[ host ][ 'nodename' ] }} launcher-
+kubectl label nodes {{ machinelist[ host ][ 'nodenamelb' ] }} launcher-
     {% endif %}
 {% endfor %}
 

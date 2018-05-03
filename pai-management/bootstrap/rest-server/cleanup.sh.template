@@ -23,7 +23,7 @@ kubectl delete ds rest-server-ds
 
 {% for host in machinelist %}
     {% if 'restserver' in machinelist[ host ] and machinelist[ host ][ 'restserver' ] == 'true' %}
-kubectl label nodes {{ machinelist[ host ][ 'nodename' ] }} restserver-
+kubectl label nodes {{ machinelist[ host ][ 'nodenamelb' ] }} restserver-
     {% endif %}
 {% endfor %}
 

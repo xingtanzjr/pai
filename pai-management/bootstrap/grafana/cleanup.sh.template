@@ -24,7 +24,7 @@ kubectl delete deployment grafana
 
 {% for host in machinelist %}
     {% if 'grafana' in machinelist[ host ] and machinelist[ host ][ 'grafana' ] == 'true' %}
-kubectl label nodes {{ machinelist[ host ][ 'nodename' ] }} grafana-
+kubectl label nodes {{ machinelist[ host ][ 'nodenamelb' ] }} grafana-
     {% endif %}
 {% endfor %}
 

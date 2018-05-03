@@ -23,7 +23,7 @@ kubectl delete ds webportal-ds
 
 {% for host in machinelist %}
     {% if 'webportal' in machinelist[ host ] and machinelist[ host ][ 'webportal' ] == 'true' %}
-kubectl label nodes {{ machinelist[ host ][ 'nodename' ] }} webportal-
+kubectl label nodes {{ machinelist[ host ][ 'nodenamelb' ] }} webportal-
     {% endif %}
 {% endfor %}
 

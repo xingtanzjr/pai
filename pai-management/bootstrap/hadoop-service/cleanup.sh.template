@@ -31,16 +31,16 @@ kubectl delete configmap {{ clusterinfo[ 'hadoopinfo' ][ 'configmapname' ] }}
 
 {% for host in machinelist %}
     {% if 'hdfsrole' in machinelist[ host ] -%}
-kubectl label nodes {{ machinelist[ host ][ 'nodename' ] }} hdfsrole-
+kubectl label nodes {{ machinelist[ host ][ 'nodenamelb' ] }} hdfsrole-
     {% endif %}
     {% if 'yarnrole' in machinelist[ host ] -%}
-kubectl label nodes {{ machinelist[ host ][ 'nodename' ] }} yarnrole-
+kubectl label nodes {{ machinelist[ host ][ 'nodenamelb' ] }} yarnrole-
     {% endif %}
     {% if 'jobhistory' in machinelist[ host ] -%}
-kubectl label nodes {{ machinelist[ host ][ 'nodename' ] }} jobhistory-
+kubectl label nodes {{ machinelist[ host ][ 'nodenamelb' ] }} jobhistory-
     {% endif %}
     {% if 'zookeeper' in machinelist[ host ] -%}
-kubectl label nodes {{ machinelist[ host ][ 'nodename' ] }} zookeeper-
+kubectl label nodes {{ machinelist[ host ][ 'nodenamelb' ] }} zookeeper-
     {% endif %}
 {% endfor %}
 
