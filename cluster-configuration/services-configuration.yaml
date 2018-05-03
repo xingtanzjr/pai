@@ -79,7 +79,7 @@ frameworklauncher:
 
 restserver:
   # port for rest api server
-  server-port: 9186
+  server-port: 30186
   # secret for signing authentication tokens, e.g., "Hello PAI!"
   jwt-secret: hellopai
   # database admin username
@@ -90,7 +90,7 @@ restserver:
 
 webportal:
   # port for webportal
-  server-port: 9286
+  server-port: 30286
 
 
 grafana:
@@ -107,4 +107,4 @@ prometheus:
 
 pylon:
   # port of pylon
-  port: 80
+  port: 30080
