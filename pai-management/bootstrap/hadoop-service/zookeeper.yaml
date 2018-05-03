@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # Copyright (c) Microsoft Corporation
 # All rights reserved.
 #
@@ -17,6 +15,42 @@
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-kubectl create configmap  host-configuration --from-file=host-configuration/
-kubectl create configmap  docker-credentials --from-file=docker-credentials/
-kubectl create configmap  gpu-configuration --from-file=gpu-configuration/
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  name: zookeeper-ds
+spec:
+  template:
+    metadata:
+      labels:
+        app: zookeeper
+    spec:
+      hostNetwork: true
+      hostPID: true
+      nodeSelector:
+        zookeeper: "true"
+      containers:
+      - name: zookeeper
+        image: xingtanzjr/zookeeper:latest
+        imagePullPolicy: Always
+        volumeMounts:
+        - mountPath: /var/lib/zoodata
+          name: zookeeper-storage
+        - mountPath: /host-configuration
+          name: host-confg-volume
+        readinessProbe:
+          exec:
+            command:
+            - cat
+            - /jobstatus/jobok
+          initialDelaySeconds: 5
+          periodSeconds: 3
+      imagePullSecrets:
+      - name: regsecret
+      volumes:
+      - name: zookeeper-storage
+        hostPath:
+          path: /datastorage/zoodata
+      - name: host-confg-volume
+        configMap:
+          name: host-configuration

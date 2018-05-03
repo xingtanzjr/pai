@@ -17,6 +17,32 @@
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-kubectl create configmap  host-configuration --from-file=host-configuration/
-kubectl create configmap  docker-credentials --from-file=docker-credentials/
-kubectl create configmap  gpu-configuration --from-file=gpu-configuration/
+
+    
+    
+    kubectl label nodes 10.190.150.233 hdfsrole=worker
+    
+    kubectl label nodes 10.190.150.233 yarnrole=worker
+    
+    
+    
+
+    kubectl label nodes 10.190.148.73 hdfsrole=master
+    
+    kubectl label nodes 10.190.148.73 yarnrole=master
+    
+    
+    
+    kubectl label nodes 10.190.148.73 jobhistory=true
+    
+    kubectl label nodes 10.190.148.73 zookeeper=true
+    
+
+    
+    
+    kubectl label nodes 10.190.178.19 hdfsrole=worker
+    
+    kubectl label nodes 10.190.178.19 yarnrole=worker
+    
+    
+    

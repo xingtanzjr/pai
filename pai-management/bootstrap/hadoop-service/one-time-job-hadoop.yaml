@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # Copyright (c) Microsoft Corporation
 # All rights reserved.
 #
@@ -17,6 +15,43 @@
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-kubectl create configmap  host-configuration --from-file=host-configuration/
-kubectl create configmap  docker-credentials --from-file=docker-credentials/
-kubectl create configmap  gpu-configuration --from-file=gpu-configuration/
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: batch-job-hadoop
+spec:
+  template:
+    metadata:
+      name: one-time-job-hadoop
+      labels:
+        onetimejob: hadoop
+    spec:
+      restartPolicy: OnFailure
+      hostNetwork: true
+      hostPID: true
+      containers:
+      - name:  one-time-job-hadoop
+        image: xingtanzjr/hadoop-run:latest
+        imagePullPolicy: Always
+        volumeMounts:
+        - mountPath: /hadoop-configuration
+          name: hadoop-config-volume
+        env:
+        - name: RESOURCEMANAGER_ADDRESS
+          value: 10.190.148.73
+        - name: ZOOKEEPER_ADDRESS
+          value: 10.190.148.73
+        - name: HDFS_ADDRESS
+          value: 10.190.148.73
+        - name: LOGSERVER_ADDRESS
+          value: 10.190.148.73
+        - name: GENERATE_CONFIG
+          value: one-time-job-prepare.sh
+        - name: START_SERVICE
+          value: one-time-job-execute.sh
+      imagePullSecrets:
+      - name: regsecret
+      volumes:
+      - name: hadoop-config-volume
+        configMap:
+          name: hadoop-configuration

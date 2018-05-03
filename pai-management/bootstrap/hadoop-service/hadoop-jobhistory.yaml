@@ -16,37 +16,56 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 apiVersion: extensions/v1beta1
-kind: Deployment
+kind: DaemonSet
 metadata:
-  name: prometheus-deployment
+  name: hadoop-jobhistory-service
 spec:
-  replicas: 1
   template:
     metadata:
-      name: prometheus
       labels:
-        app: prometheus
+        app: hadoop-jobhistory-service
     spec:
       hostNetwork: true
       hostPID: true
       nodeSelector:
-        prometheus: "true"
+        jobhistory: "true"
       containers:
-      - name: prometheus
-        image: prom/prometheus:v2.1.0
-        resources:
-          limits:
-            memory: "5Gi"
-        args:
-          - '--config.file=/etc/prometheus/prometheus.yml'
-          - '--web.listen-address=0.0.0.0:{{clusterinfo['prometheusinfo']['prometheus_port']}}'
-        ports:
-        - name: web
-          containerPort: {{clusterinfo['prometheusinfo']['prometheus_port']}}
+      - name:  hadoop-jobhistory-service
+        image: xingtanzjr/hadoop-run:latest
+        imagePullPolicy: Always
+        env:
+        - name: RESOURCEMANAGER_ADDRESS
+          value: 10.190.148.73
+        - name: ZOOKEEPER_ADDRESS
+          value: 10.190.148.73
+        - name: HDFS_ADDRESS
+          value: 10.190.148.73
+        - name: LOGSERVER_ADDRESS
+          value: 10.190.148.73
+        - name: TIMELINE_SERVER_ADDRESS
+          value: 10.190.148.73
+        - name: GENERATE_CONFIG
+          value: jobhistory-generate-script.sh
+        - name: START_SERVICE
+          value: jobhistory-start-service.sh
         volumeMounts:
-        - name: config-volume
-          mountPath: /etc/prometheus
+        - mountPath: /hadoop-configuration
+          name: hadoop-config-volume
+        - mountPath: /var/lib/hadoopdata
+          name: hadoop-tmp-storage
+        readinessProbe:
+          exec:
+            command:
+            - cat
+            - /jobstatus/jobok
+          initialDelaySeconds: 5
+          periodSeconds: 3
+      imagePullSecrets:
+      - name: regsecret
       volumes:
-      - name: config-volume
+      - name: hadoop-config-volume
         configMap:
-          name: prometheus-configmap
+          name: hadoop-configuration
+      - name: hadoop-tmp-storage
+        hostPath:
+          path: /datastorage/hadooptmp/jobhistory

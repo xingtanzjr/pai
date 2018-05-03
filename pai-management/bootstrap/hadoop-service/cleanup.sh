@@ -17,6 +17,41 @@
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-kubectl create configmap  host-configuration --from-file=host-configuration/
-kubectl create configmap  docker-credentials --from-file=docker-credentials/
-kubectl create configmap  gpu-configuration --from-file=gpu-configuration/
+pushd $(dirname "$0") > /dev/null
+
+kubectl delete job batch-job-hadoop
+kubectl delete ds hadoop-jobhistory-service
+kubectl delete ds hadoop-node-manager-ds
+kubectl delete ds hadoop-resource-manager-ds
+kubectl delete ds hadoop-data-node-ds
+kubectl delete ds hadoop-name-node-ds
+kubectl delete ds zookeeper-ds
+
+kubectl delete configmap hadoop-configuration
+
+
+    kubectl label nodes 10.190.150.233 hdfsrole-
+    
+    kubectl label nodes 10.190.150.233 yarnrole-
+    
+    
+    
+
+    kubectl label nodes 10.190.148.73 hdfsrole-
+    
+    kubectl label nodes 10.190.148.73 yarnrole-
+    
+    kubectl label nodes 10.190.148.73 jobhistory-
+    
+    kubectl label nodes 10.190.148.73 zookeeper-
+    
+
+    kubectl label nodes 10.190.178.19 hdfsrole-
+    
+    kubectl label nodes 10.190.178.19 yarnrole-
+    
+    
+    
+
+
+popd > /dev/null

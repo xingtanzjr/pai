@@ -17,6 +17,23 @@
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-kubectl create configmap  host-configuration --from-file=host-configuration/
-kubectl create configmap  docker-credentials --from-file=docker-credentials/
-kubectl create configmap  gpu-configuration --from-file=gpu-configuration/
+pushd $(dirname "$0") > /dev/null
+
+kubectl delete ds frameworklauncher-ds
+
+kubectl delete configmap frameworklauncher-configmap
+
+
+
+    
+
+    
+kubectl label nodes 10.190.148.73 launcher-
+    
+
+    
+
+
+
+
+popd > /dev/null

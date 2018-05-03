@@ -16,37 +16,46 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 apiVersion: extensions/v1beta1
-kind: Deployment
+kind: DaemonSet
 metadata:
-  name: prometheus-deployment
+  name: rest-server-ds
 spec:
-  replicas: 1
   template:
     metadata:
-      name: prometheus
+      name: rest-server
       labels:
-        app: prometheus
+        app: rest-server
     spec:
-      hostNetwork: true
-      hostPID: true
+      hostNetwork: false
+      hostPID: false
       nodeSelector:
-        prometheus: "true"
+        restserver: "true"
       containers:
-      - name: prometheus
-        image: prom/prometheus:v2.1.0
-        resources:
-          limits:
-            memory: "5Gi"
-        args:
-          - '--config.file=/etc/prometheus/prometheus.yml'
-          - '--web.listen-address=0.0.0.0:{{clusterinfo['prometheusinfo']['prometheus_port']}}'
+      - name: rest-server
+        image: xingtanzjr/rest-server:latest
+        imagePullPolicy: Always
+        securityContext:
+          privileged: true
+        env:
+        - name: LAUNCHER_WEBSERVICE_URI
+          value: http://10.190.148.73:9086
+        - name: HDFS_URI
+          value: hdfs://10.190.148.73:9000
+        - name: WEBHDFS_URI
+          value: http://10.190.148.73:50070
+        - name: YARN_URI
+          value: http://10.190.148.73:8088
+        - name: JWT_SECRET
+          value: hellopai
+        - name: DEFAULT_PAI_ADMIN_USERNAME
+          value: admin
+        - name: DEFAULT_PAI_ADMIN_PASSWORD
+          value: admin
+        - name: ETCD_URI
+          value: http://10.190.148.73:4001
         ports:
-        - name: web
-          containerPort: {{clusterinfo['prometheusinfo']['prometheus_port']}}
-        volumeMounts:
-        - name: config-volume
-          mountPath: /etc/prometheus
-      volumes:
-      - name: config-volume
-        configMap:
-          name: prometheus-configmap
+        - name: rest-server
+          containerPort: 8080
+          hostPort: 9186
+      imagePullSecrets:
+      - name: regsecret

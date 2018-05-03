@@ -1,3 +1,5 @@
+#!/bin/sh
+
 #!/bin/bash
 
 # Copyright (c) Microsoft Corporation
@@ -17,6 +19,28 @@
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-kubectl create configmap  host-configuration --from-file=host-configuration/
-kubectl create configmap  docker-credentials --from-file=docker-credentials/
-kubectl create configmap  gpu-configuration --from-file=gpu-configuration/
+INSTANCES="daemonset/node-exporter
+deployment/prometheus-deployment
+configmap/prometheus-configmap"
+
+for instance in ${INSTANCES}; do
+  kubectl delete --ignore-not-found --now ${instance}
+done
+
+
+    
+    
+kubectl label nodes 10.190.150.233 node-exporter-
+    
+
+    
+kubectl label nodes 10.190.148.73 prometheus-
+    
+    
+kubectl label nodes 10.190.148.73 node-exporter-
+    
+
+    
+    
+kubectl label nodes 10.190.178.19 node-exporter-
+    
