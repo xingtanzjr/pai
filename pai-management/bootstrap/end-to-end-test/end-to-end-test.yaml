@@ -47,8 +47,8 @@ spec:
         - name: REST_SERVER_URI
           value: http://10.190.148.73:9186
         - name: TEST_USERNAME
-          value: admin
+          value: adminadmin
         - name: TEST_PASSWORD
-          value: admin
+          value: adminadmin
       imagePullSecrets:
       - name: regsecret

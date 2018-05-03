@@ -26,7 +26,7 @@ kubectl delete sts spark-base
 
     
 
-    kubectl label nodes 10.190.148.73 sparkrole-
+    kubectl label nodes spark-master sparkrole-
     
 
     

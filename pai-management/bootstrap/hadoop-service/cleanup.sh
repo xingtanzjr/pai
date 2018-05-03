@@ -30,25 +30,25 @@ kubectl delete ds zookeeper-ds
 kubectl delete configmap hadoop-configuration
 
 
-    kubectl label nodes 10.190.150.233 hdfsrole-
+    kubectl label nodes spark-slave1 hdfsrole-
     
-    kubectl label nodes 10.190.150.233 yarnrole-
+    kubectl label nodes spark-slave1 yarnrole-
     
     
-    
-
-    kubectl label nodes 10.190.148.73 hdfsrole-
-    
-    kubectl label nodes 10.190.148.73 yarnrole-
-    
-    kubectl label nodes 10.190.148.73 jobhistory-
-    
-    kubectl label nodes 10.190.148.73 zookeeper-
     
 
-    kubectl label nodes 10.190.178.19 hdfsrole-
+    kubectl label nodes spark-master hdfsrole-
     
-    kubectl label nodes 10.190.178.19 yarnrole-
+    kubectl label nodes spark-master yarnrole-
+    
+    kubectl label nodes spark-master jobhistory-
+    
+    kubectl label nodes spark-master zookeeper-
+    
+
+    kubectl label nodes spark-slave2 hdfsrole-
+    
+    kubectl label nodes spark-slave2 yarnrole-
     
     
     

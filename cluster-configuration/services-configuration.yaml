@@ -83,9 +83,9 @@ restserver:
   # secret for signing authentication tokens, e.g., "Hello PAI!"
   jwt-secret: hellopai
   # database admin username
-  default-pai-admin-username: admin
+  default-pai-admin-username: adminadmin
   # database admin password
-  default-pai-admin-password: admin
+  default-pai-admin-password: adminadmin
 
 
 webportal:

@@ -20,17 +20,17 @@
 
     
     
-kubectl label nodes 10.190.150.233 node-exporter=true
+kubectl label nodes spark-slave1 node-exporter=true
     
 
     
-kubectl label nodes 10.190.148.73 prometheus=true
+kubectl label nodes spark-master prometheus=true
     
     
-kubectl label nodes 10.190.148.73 node-exporter=true
+kubectl label nodes spark-master node-exporter=true
     
 
     
     
-kubectl label nodes 10.190.178.19 node-exporter=true
+kubectl label nodes spark-slave2 node-exporter=true
     

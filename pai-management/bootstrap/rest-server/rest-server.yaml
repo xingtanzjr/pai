@@ -48,9 +48,9 @@ spec:
         - name: JWT_SECRET
           value: hellopai
         - name: DEFAULT_PAI_ADMIN_USERNAME
-          value: admin
+          value: adminadmin
         - name: DEFAULT_PAI_ADMIN_PASSWORD
-          value: admin
+          value: adminadmin
         - name: ETCD_URI
           value: http://10.190.148.73:4001
         ports:

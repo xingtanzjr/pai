@@ -26,7 +26,7 @@ kubectl delete deployment grafana
     
 
     
-kubectl label nodes 10.190.148.73 grafana-
+kubectl label nodes spark-master grafana-
     
 
     

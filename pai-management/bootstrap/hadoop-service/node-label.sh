@@ -20,29 +20,29 @@
 
     
     
-    kubectl label nodes 10.190.150.233 hdfsrole=worker
+    kubectl label nodes spark-slave1 hdfsrole=worker
     
-    kubectl label nodes 10.190.150.233 yarnrole=worker
+    kubectl label nodes spark-slave1 yarnrole=worker
     
     
     
 
-    kubectl label nodes 10.190.148.73 hdfsrole=master
+    kubectl label nodes spark-master hdfsrole=master
     
-    kubectl label nodes 10.190.148.73 yarnrole=master
+    kubectl label nodes spark-master yarnrole=master
     
     
     
-    kubectl label nodes 10.190.148.73 jobhistory=true
+    kubectl label nodes spark-master jobhistory=true
     
-    kubectl label nodes 10.190.148.73 zookeeper=true
+    kubectl label nodes spark-master zookeeper=true
     
 
     
     
-    kubectl label nodes 10.190.178.19 hdfsrole=worker
+    kubectl label nodes spark-slave2 hdfsrole=worker
     
-    kubectl label nodes 10.190.178.19 yarnrole=worker
+    kubectl label nodes spark-slave2 yarnrole=worker
     
     
     

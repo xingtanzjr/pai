@@ -25,7 +25,7 @@ kubectl delete ds rest-server-ds
     
 
     
-kubectl label nodes 10.190.148.73 restserver-
+kubectl label nodes spark-master restserver-
     
 
     

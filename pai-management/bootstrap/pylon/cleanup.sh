@@ -25,7 +25,7 @@ kubectl delete ds pylon-ds
     
 
     
-kubectl label nodes 10.190.148.73 pylon-
+kubectl label nodes spark-master pylon-
     
 
     

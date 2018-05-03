@@ -19,11 +19,11 @@
 
 
     
-kubectl label nodes 10.190.150.233 machinetype=gpu
+kubectl label nodes spark-slave1 machinetype=gpu
     
 
     
 
     
-kubectl label nodes 10.190.178.19 machinetype=gpu
+kubectl label nodes spark-slave2 machinetype=gpu
     

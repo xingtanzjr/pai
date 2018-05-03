@@ -21,7 +21,7 @@
     
 
     
-kubectl label nodes 10.190.148.73 launcher=true
+kubectl label nodes spark-master launcher=true
     
 
     

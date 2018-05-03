@@ -23,13 +23,13 @@ kubectl delete ds drivers-one-shot
 
 
     
-kubectl label nodes 10.190.150.233 machinetype-
+kubectl label nodes spark-slave1 machinetype-
     
 
     
 
     
-kubectl label nodes 10.190.178.19 machinetype-
+kubectl label nodes spark-slave2 machinetype-
     
 
 

@@ -20,7 +20,7 @@
 
     
 
-    kubectl label nodes 10.190.148.73 sparkrole=master
+    kubectl label nodes spark-master sparkrole=master
     
 
     

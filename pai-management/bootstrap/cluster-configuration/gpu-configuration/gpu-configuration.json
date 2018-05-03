@@ -1,11 +1,11 @@
 {
   "nodes" : {
 
-    "10.190.150.233" : {
+    "spark-slave1" : {
         "gpuType" : "teslak80"
     },
 
-    "10.190.178.19" : {
+    "spark-slave2" : {
         "gpuType" : "teslak80"
     }
 

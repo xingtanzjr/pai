@@ -28,7 +28,7 @@ kubectl delete configmap frameworklauncher-configmap
     
 
     
-kubectl label nodes 10.190.148.73 launcher-
+kubectl label nodes spark-master launcher-
     
 
     

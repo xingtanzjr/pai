@@ -30,17 +30,17 @@ done
 
     
     
-kubectl label nodes 10.190.150.233 node-exporter-
+kubectl label nodes spark-slave1 node-exporter-
     
 
     
-kubectl label nodes 10.190.148.73 prometheus-
+kubectl label nodes spark-master prometheus-
     
     
-kubectl label nodes 10.190.148.73 node-exporter-
+kubectl label nodes spark-master node-exporter-
     
 
     
     
-kubectl label nodes 10.190.178.19 node-exporter-
+kubectl label nodes spark-slave2 node-exporter-
     

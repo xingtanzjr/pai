@@ -25,7 +25,7 @@ kubectl delete ds webportal-ds
     
 
     
-kubectl label nodes 10.190.148.73 webportal-
+kubectl label nodes spark-master webportal-
     
 
     

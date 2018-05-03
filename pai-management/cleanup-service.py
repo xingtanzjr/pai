@@ -61,7 +61,7 @@ def execute_shell(shell_cmd, error_msg):
 
     except subprocess.CalledProcessError:
         logger.error(error_msg)
-        sys.exit(1)
+#        sys.exit(1)
 
 
 def clean_service(service_config, serv):
@@ -71,6 +71,7 @@ def clean_service(service_config, serv):
     execute_shell(shell_cmd, error_msg)
 
     shell_cmd = './bootstrap/{0}/{1}'.format(serv, service_config['servicelist'][serv]['stopscript'])
+    logger.info(shell_cmd)
     error_msg = 'Failed stop the service {0}'.format(serv)
     execute_shell(shell_cmd, error_msg)
 
