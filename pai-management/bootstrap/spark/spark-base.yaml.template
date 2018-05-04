@@ -77,7 +77,7 @@ spec:
             - name: SPARK_CONF_spark_eventLog_dir
               value: hdfs://{{ clusterinfo[ 'hadoopinfo' ][ 'hadoop_vip' ] }}:9000/spark_history_server/history
             - name: SPARK_CONF_spark_yarn_historyServer_address
-              value: http:{{ clusterinfo[ 'hadoopinfo' ][ 'hadoop_vip' ] }}:18080
+              value: http://{{ clusterinfo[ 'hadoopinfo' ][ 'hadoop_vip' ] }}:18080
           ports:
           - containerPort: 18080
             name: history-server

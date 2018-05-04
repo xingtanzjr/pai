@@ -166,8 +166,19 @@ servicelist:
     startscript: start.sh
     stopscript: cleanup.sh
 
+  etcd:
+    prerequisite:
+      - None
+    templatelist:
+      - node-label.sh
+      - etcd.yaml
+      - cleanup.sh
+    startscript: start.sh
+    stopscript: cleanup.sh
+
   rest-server:
     prerequisite:
+      - etcd
       - cluster-configuration
       - frameworklauncher
     templatelist:
