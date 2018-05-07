@@ -45,7 +45,7 @@ spec:
         - name: WEBSERVICE_URI
           value: http://10.190.148.73:9086
         - name: REST_SERVER_URI
-          value: http://10.190.148.73:9186
+          value: http://10.190.148.73:30186
         - name: TEST_USERNAME
           value: adminadmin
         - name: TEST_PASSWORD

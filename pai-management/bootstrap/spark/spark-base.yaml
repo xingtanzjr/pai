@@ -77,7 +77,7 @@ spec:
             - name: SPARK_CONF_spark_eventLog_dir
               value: hdfs://10.190.148.73:9000/spark_history_server/history
             - name: SPARK_CONF_spark_yarn_historyServer_address
-              value: http:10.190.148.73:18080
+              value: http://10.190.148.73:18080
           ports:
           - containerPort: 18080
             name: history-server

@@ -14,7 +14,21 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-portal-svc
+  labels:
+    app: webportal
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    nodePort: 30286
+    name: webui
+  selector:
+    app: webportal
+---
 apiVersion: extensions/v1beta1
 kind: DaemonSet
 metadata:
@@ -36,7 +50,7 @@ spec:
         imagePullPolicy: Always
         env:
         - name: REST_SERVER_URI
-          value: http://10.190.148.73:9186
+          value: http://10.190.148.73:30186
         - name: PROMETHEUS_URI
           value: http://10.190.148.73:9091
         - name: YARN_WEB_PORTAL_URI
@@ -46,12 +60,11 @@ spec:
         - name: K8S_DASHBOARD_URI
           value: http://10.190.148.73:9090
         - name: K8S_API_SERVER_URI
-          value: http://10.190.148.73:8080
+          value: http://10.190.148.73:6443
         - name: EXPORTER_PORT
           value: "9100"
         ports:
         - name: webportal
           containerPort: 8080
-          hostPort: 9286
       imagePullSecrets:
       - name: regsecret

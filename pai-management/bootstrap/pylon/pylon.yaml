@@ -15,6 +15,21 @@
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+apiVersion: v1
+kind: Service
+metadata:
+  name: pylon-svc
+  labels:
+    app: pylon-svc
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    nodePort: 30080
+    name: webui
+  selector:
+    app: pylon
+---
 apiVersion: extensions/v1beta1
 kind: DaemonSet
 metadata:
@@ -36,9 +51,9 @@ spec:
           imagePullPolicy: Always
           env:
             - name: REST_SERVER_URI
-              value: http://10.190.148.73:9186
+              value: http://10.190.148.73:30186
             - name: K8S_API_SERVER_URI
-              value: http://10.190.148.73:8080
+              value: http://10.190.148.73:6443
             - name: WEBHDFS_URI
               value: http://10.190.148.73:50070
             - name: PROMETHEUS_URI
@@ -50,10 +65,9 @@ spec:
             - name: GRAFANA_URI
               value: http://10.190.148.73:3000
             - name: PAI_WEB_PORTAL_URI
-              value: http://10.190.148.73:9286
+              value: http://10.190.148.73:30286
           ports:
             - name: pylon
               containerPort: 80
-              hostPort: 80
       imagePullSecrets:
         - name: regsecret

@@ -19,15 +19,12 @@
 
 pushd $(dirname "$0") > /dev/null
 
-kubectl delete ds pylon-ds
-
-kubectl delete svc pylon-svc
+kubectl delete pod etcd-server
 
 
     
 
-    
-kubectl label nodes spark-master pylon-
+    kubectl label nodes spark-master etcdrole-
     
 
     

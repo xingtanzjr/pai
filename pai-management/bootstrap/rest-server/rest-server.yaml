@@ -15,6 +15,21 @@
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+apiVersion: v1
+kind: Service
+metadata:
+  name: rest-server-svc
+  labels:
+    app: rest-server-svc
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    nodePort: 30186
+    name: webui
+  selector:
+    app: rest-server
+---
 apiVersion: extensions/v1beta1
 kind: DaemonSet
 metadata:
@@ -56,6 +71,5 @@ spec:
         ports:
         - name: rest-server
           containerPort: 8080
-          hostPort: 9186
       imagePullSecrets:
       - name: regsecret

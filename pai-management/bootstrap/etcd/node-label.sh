@@ -17,20 +17,10 @@
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-pushd $(dirname "$0") > /dev/null
-
-kubectl delete ds pylon-ds
-
-kubectl delete svc pylon-svc
-
 
     
 
-    
-kubectl label nodes spark-master pylon-
-    
-
+    kubectl label nodes spark-master etcdrole=master
     
 
-
-popd > /dev/null
+    
