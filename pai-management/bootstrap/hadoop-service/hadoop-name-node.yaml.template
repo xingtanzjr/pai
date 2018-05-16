@@ -49,7 +49,7 @@ spec:
           periodSeconds: 3
         env:
         - name: HDFS_ADDRESS
-          value: {{ clusterinfo[ 'hadoopinfo' ][ ''hadoop_master_hostname'' ] }}
+          value: {{ clusterinfo[ 'hadoopinfo' ][ 'hadoop_master_hostname' ] }}
         - name: GENERATE_CONFIG
           value: namenode-generate-script.sh
         - name: START_SERVICE

@@ -44,15 +44,15 @@ spec:
           name: gpu-confg-volume
         env:
         - name: RESOURCEMANAGER_ADDRESS
-          value: {{ clusterinfo[ 'hadoopinfo' ][ ''hadoop_master_hostname'' ] }}
+          value: {{ clusterinfo[ 'hadoopinfo' ][ 'hadoop_master_hostname' ] }}
         - name: ZOOKEEPER_ADDRESS
-          value: {{ clusterinfo[ 'hadoopinfo' ][ ''hadoop_master_hostname'' ] }}
+          value: {{ clusterinfo[ 'hadoopinfo' ][ 'hadoop_master_hostname' ] }}
         - name: HDFS_ADDRESS
-          value: {{ clusterinfo[ 'hadoopinfo' ][ ''hadoop_master_hostname'' ] }}
+          value: {{ clusterinfo[ 'hadoopinfo' ][ 'hadoop_master_hostname' ] }}
         - name: LOGSERVER_ADDRESS
-          value: {{ clusterinfo[ 'hadoopinfo' ][ ''hadoop_master_hostname'' ] }}
+          value: {{ clusterinfo[ 'hadoopinfo' ][ 'hadoop_master_hostname' ] }}
         - name: TIMELINE_SERVER_ADDRESS
-          value: {{ clusterinfo[ 'hadoopinfo' ][ ''hadoop_master_hostname'' ] }}
+          value: {{ clusterinfo[ 'hadoopinfo' ][ 'hadoop_master_hostname' ] }}
         - name: GENERATE_CONFIG
           value: frameworklauncher-generate-config.sh
         - name: FRAMEWORKLAUNCHER_VIP
