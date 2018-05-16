@@ -67,17 +67,17 @@ spec:
           args: ["/spark-historyserver.sh"]
           env:
             - name: CORE_CONF_fs_defaultFS
-              value: hdfs://{{ clusterinfo[ 'hadoopinfo' ][ 'hadoop_vip' ] }}:9000
+              value: hdfs://{{ clusterinfo[ 'hadoopinfo' ][ ''hadoop_master_hostname'' ] }}:9000
             - name: YARN_CONF_yarn_resourcemanager_hostname
-              value: {{ clusterinfo[ 'hadoopinfo' ][ 'hadoop_vip' ] }}
+              value: {{ clusterinfo[ 'hadoopinfo' ][ ''hadoop_master_hostname'' ] }}
             - name: SPARK_CONF_spark_eventLog_enabled
               value: "true"
             - name: spark_eventLog_dir
               value: /spark_history_server/history
             - name: SPARK_CONF_spark_eventLog_dir
-              value: hdfs://{{ clusterinfo[ 'hadoopinfo' ][ 'hadoop_vip' ] }}:9000/spark_history_server/history
+              value: hdfs://{{ clusterinfo[ 'hadoopinfo' ][ ''hadoop_master_hostname'' ] }}:9000/spark_history_server/history
             - name: SPARK_CONF_spark_yarn_historyServer_address
-              value: http://{{ clusterinfo[ 'hadoopinfo' ][ 'hadoop_vip' ] }}:18080
+              value: http://{{ clusterinfo[ 'hadoopinfo' ][ ''hadoop_master_hostname'' ] }}:18080
           ports:
           - containerPort: 18080
             name: history-server
