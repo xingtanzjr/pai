@@ -35,15 +35,15 @@ spec:
         imagePullPolicy: Always
         env:
         - name: RESOURCEMANAGER_ADDRESS
-          value: {{ clusterinfo[ 'hadoopinfo' ][ 'hadoop_vip' ] }}
+          value: {{ clusterinfo[ 'hadoopinfo' ][ 'hadoop_master_hostname' ] }}
         - name: ZOOKEEPER_ADDRESS
-          value: {{ clusterinfo[ 'hadoopinfo' ][ 'hadoop_vip' ] }}
+          value: {{ clusterinfo[ 'hadoopinfo' ][ 'hadoop_master_hostname' ] }}
         - name: HDFS_ADDRESS
-          value: {{ clusterinfo[ 'hadoopinfo' ][ 'hadoop_vip' ] }}
+          value: {{ clusterinfo[ 'hadoopinfo' ][ 'hadoop_master_hostname' ] }}
         - name: LOGSERVER_ADDRESS
-          value: {{ clusterinfo[ 'hadoopinfo' ][ 'hadoop_vip' ] }}
+          value: {{ clusterinfo[ 'hadoopinfo' ][ 'hadoop_master_hostname' ] }}
         - name: TIMELINE_SERVER_ADDRESS
-          value: {{ clusterinfo[ 'hadoopinfo' ][ 'hadoop_vip' ] }}
+          value: {{ clusterinfo[ 'hadoopinfo' ][ 'hadoop_master_hostname' ] }}
         - name: GENERATE_CONFIG
           value: jobhistory-generate-script.sh
         - name: START_SERVICE

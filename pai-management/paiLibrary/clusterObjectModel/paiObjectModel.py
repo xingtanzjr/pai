@@ -201,9 +201,9 @@ class paiObjectModel:
         serviceDict["clusterinfo"]["hadoopinfo"]["configmapname"] = "hadoop-configuration"
         serviceDict["clusterinfo"]["hadoopinfo"]["hadoop_vip"] = \
             serviceDict["clusterinfo"]["hadoopinfo"]["hadoop-version"] = self.getMasterIP()
+        serviceDict["clusterinfo"]["hadoopinfo"]["hadoop_master_hostname"] = self.getMasterHostname()
 
-
-        # section : virtualClusters
+            # section : virtualClusters
 
         serviceDict["clusterinfo"]["virtualClusters"] = self.rawData["serviceConfiguration"]["hadoop"]["virtualClusters"]
 
@@ -431,6 +431,15 @@ class paiObjectModel:
 
         sys.exit(1)
 
+    def getMasterHostname(self):
+        for host in self.rawData["clusterConfiguration"]["machine-list"]:
+            if "pai-master" in host and host["pai-master"] == "true":
+                return host["hostname"]
+
+        print "At least one and only one machine should be labeled with pai-master = true"
+        print "please modify your cluster configuration, thanks."
+
+        sys.exit(1)
 
 
     def parseConfiguration(self):

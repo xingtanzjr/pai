@@ -38,13 +38,13 @@ spec:
           name: hadoop-config-volume
         env:
         - name: RESOURCEMANAGER_ADDRESS
-          value: {{ clusterinfo[ 'hadoopinfo' ][ 'hadoop_vip' ] }}
+          value: {{ clusterinfo[ 'hadoopinfo' ][ 'hadoop_master_hostname' ] }}
         - name: ZOOKEEPER_ADDRESS
-          value: {{ clusterinfo[ 'hadoopinfo' ][ 'hadoop_vip' ] }}
+          value: {{ clusterinfo[ 'hadoopinfo' ][ 'hadoop_master_hostname' ] }}
         - name: HDFS_ADDRESS
-          value: {{ clusterinfo[ 'hadoopinfo' ][ 'hadoop_vip' ] }}
+          value: {{ clusterinfo[ 'hadoopinfo' ][ 'hadoop_master_hostname' ] }}
         - name: LOGSERVER_ADDRESS
-          value: {{ clusterinfo[ 'hadoopinfo' ][ 'hadoop_vip' ] }}
+          value: {{ clusterinfo[ 'hadoopinfo' ][ 'hadoop_master_hostname' ] }}
         - name: GENERATE_CONFIG
           value: one-time-job-prepare.sh
         - name: START_SERVICE

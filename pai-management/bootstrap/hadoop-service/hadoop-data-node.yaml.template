@@ -51,7 +51,7 @@ spec:
           periodSeconds: 3
         env:
         - name: HDFS_ADDRESS
-          value: {{ clusterinfo[ 'hadoopinfo' ][ 'hadoop_vip' ] }}
+          value: {{ clusterinfo[ 'hadoopinfo' ][ 'hadoop_master_hostname' ] }}
         - name: GENERATE_CONFIG
           value: datanode-generate-script.sh
         - name: START_SERVICE
