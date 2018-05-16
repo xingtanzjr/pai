@@ -84,7 +84,7 @@
 +
 +    <property>
 +      <name>yarn.nodemanager.hostname</name>
-+      <value>{{ host_config['ip'] }}</value>
++      <value>{{ host_config['hostname'] }}</value>
 +    </property>  
 +
 +    <property>  
@@ -129,7 +129,7 @@
 +
 +    <property>
 +      <name>yarn.nodemanager.address</name>
-+      <value>{{ host_config['ip'] }}:8041</value>
++      <value>{{ host_config['hostname'] }}:8041</value>
 +    </property>
 +
 +    <property>
