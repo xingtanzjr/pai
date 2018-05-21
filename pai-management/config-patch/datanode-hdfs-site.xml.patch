@@ -16,7 +16,7 @@
 +
 +<property>
 +  <name>dfs.namenode.name.dir</name>
-+  <value>file:///var/lib/hdfs/name</value>
++  <value>file:///data/hdfs/name</value>
 +  <description>
 +         This property specifies the URIs of the directories where the NameNode
 +         stores its metadata and edit logs.
@@ -25,7 +25,7 @@
 +
 +<property>
 +  <name>dfs.datanode.data.dir</name>
-+  <value>file:///var/lib/hdfs/data</value>
++  <value>file:///data/hdfs/data</value>
 +  <description>
 +         This property specifies the URIs of the directories where the DataNode stores
 +         blocks.
