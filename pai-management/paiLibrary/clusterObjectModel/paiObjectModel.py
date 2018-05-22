@@ -292,7 +292,10 @@ class paiObjectModel:
             hostname = host["hostname"]
             self.labelExpend(host)
             host["nodename"] = host["hostip"]
-            host["nodenamelb"] = host["k8s-node-name"]
+            if 'k8s-node-name' in host:
+                host["nodenamelb"] = host["k8s-node-name"]
+            else:
+                host["nodenamelb"] = host["hostname"]
             host["machinetype"] = host["machine-type"]
             host["ip"] = host["hostip"]
 
