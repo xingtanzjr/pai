@@ -289,7 +289,10 @@ class paiObjectModel:
         serviceDict["machinelist"] = dict()
 
         for host in self.rawData["clusterConfiguration"]["machine-list"]:
-            hostname = host["hostname"]
+            if "hostname-short" in host:
+                hostname = host['hostname-short']
+            else:
+                hostname = host["hostname"]
             self.labelExpend(host)
             host["nodename"] = host["hostip"]
             if 'k8s-node-name' in host:

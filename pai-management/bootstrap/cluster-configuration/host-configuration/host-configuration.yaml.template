@@ -20,7 +20,7 @@
 
 {{ host }}:
     ip: {{ machinelist[host]['ip'] }}
-    hostname: {{ host }}
+    hostname: {{ machinelist[host]['hostname'] }}
     dataFolder: {{ machineinfo[ machinelist[ host ][ 'machinetype' ] ][ 'dataFolder' ] }}
     {% if 'zkid' in machinelist[host] -%}
     zkid: "{{ machinelist[host]['zkid'] }}"
