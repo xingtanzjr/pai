@@ -60,6 +60,7 @@ spec:
       # like weave. Otherwise, namenode fails to see physical IP address of datanodes.
       hostNetwork: true
       hostPID: true
+      dnsPolicy: ClusterFirstWithHostNet
       containers:
         - name: spark-base
           image: xingtanzjr/spark-base:2.3.0
